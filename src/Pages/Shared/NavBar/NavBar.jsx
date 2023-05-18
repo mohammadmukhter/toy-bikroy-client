@@ -12,8 +12,8 @@ const NavBar = () => {
     </li>
   );
   return (
-    <div>
-      <div className="navbar bg-[#F1DEC9] text-white px-5 sticky top-0 z-50">
+    <>
+      <div className="navbar bg-[#E7CBCB] text-[#643843] px-5 sticky top-0 z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -34,7 +34,7 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow text-[#8D7B68] bg-gray-900 rounded-box w-52 z-30"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow text-[#643843] bg-[#EDCDBB] rounded-box w-52 z-30"
             >
               {list}
             </ul>
@@ -44,7 +44,7 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal text-[#8D7B68] px-1">{list}</ul>
+          <ul className="menu menu-horizontal text-[#643843] px-1">{list}</ul>
         </div>
         <div className="navbar-end">
           {/* <>
@@ -59,20 +59,20 @@ const NavBar = () => {
                 />
               </div>
             </div>
-            <button className="bg-[#E3B7A0] text-[#8D7B68] px-2 py-1 rounded font-bold">
+            <button className="bg-[#E3B7A0] text-[#643843] hover:bg-[#472D2D] px-2 py-1 rounded font-bold">
               Log Out
             </button>
           </> */}
 
           <Link
             to="/login"
-            className="bg-[#E3B7A0] px-2 py-1 rounded text-[#8D7B68] font-bold"
+            className=" px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
           >
             Login
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
