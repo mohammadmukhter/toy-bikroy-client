@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
+import AllToys from "../Pages/AllToys/AllToys";
 import CreateToy from "../Pages/CreateToy/CreateToy";
 import Home from "../Pages/Home/Home/Home";
 
@@ -15,6 +16,10 @@ const Route = createBrowserRouter([
       {
         path: "createToy",
         element: <CreateToy></CreateToy>,
+      },
+      {
+        path: "toys",
+        element: <AllToys></AllToys>,
       },
     ],
   },
