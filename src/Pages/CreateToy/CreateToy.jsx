@@ -25,12 +25,22 @@ const CreateToy = () => {
     };
 
     console.log(toyFormData);
+
+    fetch("http://localhost:5000/toys", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toyFormData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
   return (
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
       <h2 className="text-[#643843] text-4xl font-semibold mb-4">Add A Toy</h2>
 
-      <div className="bg-[#E7CBCB] py-8 px-4 rounded-md">
+      <div className="bg-[#E7CBCB]/30 py-8 px-4 rounded-md shadow-lg">
         <form onSubmit={formHandler}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="form-control">
@@ -73,7 +83,7 @@ const CreateToy = () => {
                 <span className="label-text">Seller Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 placeholder="Seller Email"
                 name="seller_email"
                 className="input w-full "
