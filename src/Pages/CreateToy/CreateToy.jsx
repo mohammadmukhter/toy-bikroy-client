@@ -34,7 +34,12 @@ const CreateToy = () => {
       body: JSON.stringify(toyFormData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.insertedId) {
+          form.reset();
+          alert("data inserted successfully");
+        }
+      });
   };
   return (
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
