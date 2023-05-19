@@ -1,6 +1,6 @@
 import Banner from "../Banner/Banner";
-import Category from "../Category/Category";
 import ImgGallery from "../ImgGallery/ImgGallery";
+import Category from "./Category/Category";
 
 const Home = () => {
   return (
