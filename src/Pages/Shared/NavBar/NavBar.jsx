@@ -90,7 +90,7 @@ const NavBar = () => {
             <>
               <Link
                 to="/login"
-                className=" px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
+                className=" mx-4 px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
               >
                 Login
               </Link>
