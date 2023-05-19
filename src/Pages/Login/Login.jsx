@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import loginImg from "../../../src/assets/login.jpg";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const { loginHandler } = useContext(AuthContext);
+
   const formHandler = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,6 +19,16 @@ const Login = () => {
     };
 
     console.log(userData);
+
+    loginHandler(email, password)
+      .then((res) => {
+        const loggedUser = res.user;
+        console.log(loggedUser);
+        form.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="hero min-h-screen bg-white">
