@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const MyToys = () => {
@@ -85,9 +86,11 @@ const MyToys = () => {
                       <td>{data.toyPrice}</td>
                       <td>{data.availableQuantity}</td>
                       <th>
-                        <button className="border px-2 py-1 rounded mx-2  bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] ">
-                          DETAILS
-                        </button>
+                        <Link to="/updateToy" state={{ toyData: data }}>
+                          <button className="border px-2 py-1 rounded mx-2  bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] ">
+                            Update
+                          </button>
+                        </Link>
                         <button className="border px-2 py-1 font-bold rounded  bg-red-600 text-[#E7CBCB] hover:bg-red-800">
                           X
                         </button>

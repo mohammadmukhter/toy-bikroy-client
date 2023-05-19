@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import AllToys from "../Pages/AllToys/AllToys";
 import CreateToy from "../Pages/CreateToy/CreateToy";
+import UpdateToy from "../Pages/CreateToy/UpdateToy";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
@@ -34,6 +35,14 @@ const Route = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyToys></MyToys>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "updateToy",
+        element: (
+          <PrivateRoute>
+            <UpdateToy></UpdateToy>
           </PrivateRoute>
         ),
       },

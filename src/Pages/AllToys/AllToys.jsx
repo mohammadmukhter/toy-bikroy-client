@@ -69,9 +69,6 @@ const AllToys = () => {
                       <button className="border px-2 py-1 rounded mx-2  bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] ">
                         DETAILS
                       </button>
-                      <button className="border px-2 py-1 font-bold rounded  bg-red-600 text-[#E7CBCB] hover:bg-red-800">
-                        X
-                      </button>
                     </th>
                   </tr>
                 );
