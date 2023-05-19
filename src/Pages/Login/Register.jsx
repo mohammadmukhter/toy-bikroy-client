@@ -1,3 +1,4 @@
+import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import registerImg from "../../../src/assets/register.jpg";
@@ -27,6 +28,18 @@ const Register = () => {
       .then((res) => {
         const registeredUser = res.user;
         console.log(registeredUser);
+
+        updateProfile(registeredUser, {
+          displayName: `${userName}`,
+          photoURL: `${userPhotoUrl}`,
+        })
+          .then((res) => {
+            const userUpdatedData = res.user;
+            console.log(userUpdatedData);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         form.reset();
       })
       .catch((err) => {

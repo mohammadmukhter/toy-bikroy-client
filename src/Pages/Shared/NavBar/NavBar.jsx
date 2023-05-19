@@ -1,7 +1,20 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOutHandler } = useContext(AuthContext);
+  console.log(user, logOutHandler);
+
+  const logOut = () => {
+    logOutHandler()
+      .then(() => {
+        console.log("user log out successfully");
+      })
+      .catch((err) => console.log(err));
+  };
+
   const list = (
     <li>
       <Link to="/">Home</Link>
@@ -47,35 +60,42 @@ const NavBar = () => {
           <ul className="menu menu-horizontal text-[#643843] px-1">{list}</ul>
         </div>
         <div className="navbar-end">
-          {/* <>
-            <div className="w-10 rounded-full me-2">
-              <div
-                className="tooltip tooltip-bottom font-bold"
-                data-tip={"hello"}
-              >
-                <img
-                  className="w-10 rounded-full hover:cursor-pointer"
-                  src={userImg}
-                />
+          {user ? (
+            <>
+              <div className="w-10 rounded-full me-2">
+                <div
+                  className="tooltip tooltip-bottom font-bold"
+                  data-tip={user.displayName}
+                >
+                  <img
+                    className="w-10 rounded-full hover:cursor-pointer"
+                    src={user.photoURL}
+                  />
+                </div>
               </div>
-            </div>
-            <button className="bg-[#E3B7A0] text-[#643843] hover:bg-[#472D2D] px-2 py-1 rounded font-bold">
-              Log Out
-            </button>
-          </> */}
-
-          <Link
-            to="/login"
-            className=" px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className=" px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
-          >
-            Register
-          </Link>
+              <button
+                onClick={logOut}
+                className=" bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] px-2 py-1 rounded font-bold"
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className=" px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className=" px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>
