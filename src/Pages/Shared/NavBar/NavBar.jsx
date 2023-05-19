@@ -70,6 +70,12 @@ const NavBar = () => {
           >
             Login
           </Link>
+          <Link
+            to="/register"
+            className=" px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
+          >
+            Register
+          </Link>
         </div>
       </div>
     </>
