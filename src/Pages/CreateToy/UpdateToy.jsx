@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 const UpdateToy = () => {
   const location = useLocation();
 
-  console.log(location.state.toyData);
   const {
     _id,
     toyName,
@@ -19,42 +18,31 @@ const UpdateToy = () => {
   const formHandler = (event) => {
     event.preventDefault();
     const form = event.target;
-    const toyName = form.toy_name.value;
-    const toyPhotoUrl = form.toy_photo_url.value;
-    const sellerName = form.seller_name.value;
-    const sellerEmail = form.seller_email.value;
+
     const toyPrice = form.toy_price.value;
-    const toyCategory = form.toy_category.value;
-    const rating = form.rating.value;
     const availableQuantity = form.available_quantity.value;
     const toyDetails = form.toy_details.value;
 
-    const toyFormData = {
-      toyName,
-      toyPhotoUrl,
-      sellerName,
-      sellerEmail,
+    const toyUpdateFormData = {
       toyPrice,
-      toyCategory,
-      rating,
       availableQuantity,
       toyDetails,
     };
 
-    console.log(toyFormData);
+    console.log(toyUpdateFormData);
 
-    // fetch("http://localhost:5000/toys", {
-    //   method: "POST",
+    // fetch(`http://localhost:5000/toys/${_id}`, {
+    //   method: "PUT",
     //   headers: {
     //     "content-type": "application/json",
     //   },
-    //   body: JSON.stringify(toyFormData),
+    //   body: JSON.stringify(toyUpdateFormData),
     // })
     //   .then((res) => res.json())
     //   .then((data) => {
-    //     if (data.insertedId) {
+    //     if (data) {
     //       form.reset();
-    //       alert("data inserted successfully");
+    //       alert("data Updated successfully");
     //     }
     //   });
   };
