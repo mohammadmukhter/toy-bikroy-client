@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const AllToys = () => {
-  const [toys, setToys] = useState([]);
+  const [toys, setToys] = useState(null);
   useEffect(() => {
     const fetchFunction = async () => {
       const fetchData = await fetch("http://localhost:5000/toys");
@@ -11,6 +11,21 @@ const AllToys = () => {
 
     fetchFunction();
   }, []);
+
+  if (!toys) {
+    return (
+      <div className="text-center">
+        <div
+          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-warning motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status"
+        >
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Loading...
+          </span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-5 py-2 lg:px-16 lg:pt-12 pb-6">
