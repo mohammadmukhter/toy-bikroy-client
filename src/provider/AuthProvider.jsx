@@ -16,16 +16,19 @@ const AuthProvider = ({ children }) => {
 
   //   register handler function
   const registerHandler = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //   login handler function
   const loginHandler = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   //   logout handler function
   const logOutHandler = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
