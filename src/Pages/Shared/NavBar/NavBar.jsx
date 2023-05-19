@@ -21,7 +21,7 @@ const NavBar = () => {
       <Link to="/toys">All Toys</Link>
       {user ? (
         <>
-          <Link to="">My Toys</Link>
+          <Link to="/myToys">My Toys</Link>
           <Link to="/createToy">Add a Toys</Link>
         </>
       ) : (
