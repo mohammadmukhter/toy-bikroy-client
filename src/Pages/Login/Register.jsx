@@ -1,11 +1,15 @@
 import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import registerImg from "../../../src/assets/register.jpg";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
   const { registerHandler } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from.pathname || "/";
 
   const formHandler = (event) => {
     event.preventDefault();
@@ -33,14 +37,15 @@ const Register = () => {
           displayName: `${userName}`,
           photoURL: `${userPhotoUrl}`,
         })
-          .then((res) => {
-            const userUpdatedData = res.user;
-            console.log(userUpdatedData);
+          .then((result) => {
+            console.log("updated user:", result);
+
+            form.reset();
+            navigate(from, { replace: true });
           })
           .catch((error) => {
             console.log(error);
           });
-        form.reset();
       })
       .catch((err) => {
         console.log(err);

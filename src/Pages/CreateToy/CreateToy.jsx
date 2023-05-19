@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+
 const CreateToy = () => {
+  const { user } = useContext(AuthContext);
   const formHandler = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -78,6 +82,7 @@ const CreateToy = () => {
               </label>
               <input
                 type="text"
+                defaultValue={user.displayName}
                 placeholder="Seller Name"
                 name="seller_name"
                 className="input w-full "
@@ -90,6 +95,7 @@ const CreateToy = () => {
               <input
                 type="email"
                 placeholder="Seller Email"
+                defaultValue={user.email}
                 name="seller_email"
                 className="input w-full "
               />
