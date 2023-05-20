@@ -27,7 +27,7 @@ const NavBar = () => {
       ) : (
         ""
       )}
-      <Link to="">Blogs</Link>
+      <Link to="/blog">Blogs</Link>
     </li>
   );
   return (

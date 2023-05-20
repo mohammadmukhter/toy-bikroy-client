@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import AllToys from "../Pages/AllToys/AllToys";
+import Blog from "../Pages/Blog/Blog";
 import CreateToy from "../Pages/CreateToy/CreateToy";
 import UpdateToy from "../Pages/CreateToy/UpdateToy";
 import Home from "../Pages/Home/Home/Home";
@@ -42,7 +43,11 @@ const Route = createBrowserRouter([
       },
       {
         path: "toyDetails/:id",
-        element: <ToyDetails></ToyDetails>,
+        element: (
+          <PrivateRoute>
+            <ToyDetails></ToyDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://toy-bikroy-server.vercel.app/toyDetails/${params.id}`),
       },
@@ -53,6 +58,10 @@ const Route = createBrowserRouter([
             <UpdateToy></UpdateToy>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "blog",
+        element: <Blog></Blog>,
       },
       {
         path: "register",
