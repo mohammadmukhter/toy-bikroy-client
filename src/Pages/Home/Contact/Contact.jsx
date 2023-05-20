@@ -1,19 +1,18 @@
 import { Link } from "react-router-dom";
+import contactImg from "../../../assets/contact.jpg";
 
 const Contact = () => {
   return (
-    <div>
+    <div className="container mx-auto">
       <section className="mb-12 text-gray-800 mt-32">
-        <div className="flex flex-wrap">
-          <div className="grow-0 shrink-0 basis-auto mb-6 md:mb-0 w-full md:w-6/12 px-3 lg:px-6">
-            <h2 className="text-3xl font-bold mb-6">Contact us</h2>
-            <p className="text-gray-500 mb-6">
-              RecipeDish is more popular for unique recipe and cooking services.
-              please feel free to contact with us for any query.
-            </p>
-            <p className="text-gray-500 mb-2">kolkata, 1000/street, India</p>
-            <p className="text-gray-500 mb-2">+ 0111 234 567 89</p>
-            <p className="text-gray-500 mb-2">recipedish@info.com</p>
+        <div>
+          <h2 className="text-6xl font-bold text-[#643843] text-center mb-8 mt-12">
+            Contact With Us
+          </h2>
+        </div>
+        <div className="flex flex-wrap flex-row-reverse items-center">
+          <div className="grow-0 shrink-0 basis-auto mb-6 md:mb-0 w-1/2 md:w-6/12 px-3 lg:px-6">
+            <img className="w-auto lg:w-96 mx-auto" src={contactImg} alt="" />
           </div>
           <div className="grow-0 shrink-0 basis-auto mb-12 md:mb-0 w-full md:w-6/12 px-3 lg:px-6">
             <form>
