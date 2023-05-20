@@ -14,11 +14,13 @@ const Category = () => {
   }, []);
 
   return (
-    <div className="container mx-auto mb-8 px-5 py-2 lg:px-32 lg:pt-24">
-      <h2 className="text-[#643843] text-4xl font-semibold mb-4">Toy Car</h2>
+    <div className="container mx-auto mb-8 px-5 py-2 lg:px-18 lg:pt-24">
+      <h2 className="text-6xl font-bold text-[#643843] text-center mb-8 mt-12">
+        Toy Cars
+      </h2>
 
       <Tabs>
-        <TabList className="Tabs tabs-boxed text-center bg-[#E7CBCB]">
+        <TabList className="Tabs tabs-boxed text-center bg-[#E7CBCB] rounded-b-none">
           <Tab className="tab">
             <div>Regular Car</div>
           </Tab>
@@ -31,6 +33,9 @@ const Category = () => {
         </TabList>
 
         <TabPanel>
+          <h2 className="text-center text-[#643843] bg-[#f3eaec] rounded-b-md">
+            Regular Car
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {subCategoryData
               .filter((data) => data.toyCategory === "regular_car")
@@ -40,6 +45,9 @@ const Category = () => {
           </div>
         </TabPanel>
         <TabPanel>
+          <h2 className="text-center text-[#643843] bg-[#f3eaec] rounded-b-md">
+            Sports Car
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {subCategoryData
               .filter((data) => data.toyCategory === "sports_car")
@@ -49,6 +57,9 @@ const Category = () => {
           </div>
         </TabPanel>
         <TabPanel>
+          <h2 className="text-center text-[#643843] bg-[#f3eaec] rounded-b-md">
+            Truck
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {subCategoryData
               .filter((data) => data.toyCategory === "truck")

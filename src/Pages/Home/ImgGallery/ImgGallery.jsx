@@ -9,7 +9,7 @@ const ImgGallery = () => {
   return (
     <div>
       <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
-        <h2 className="text-[#643843] text-4xl font-semibold mb-4">
+        <h2 className="text-6xl font-bold text-[#643843] text-center mb-8 mt-12">
           Toys Gallery
         </h2>
         <div className="-m-1 flex flex-wrap md:-m-2">
