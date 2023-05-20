@@ -39,7 +39,6 @@ const Register = () => {
         })
           .then((result) => {
             console.log("updated user:", result);
-
             form.reset();
             navigate(from, { replace: true });
           })

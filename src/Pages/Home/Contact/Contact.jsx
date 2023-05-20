@@ -85,7 +85,7 @@ const Contact = () => {
               <div className="form-group form-check text-center mb-6">
                 <input
                   type="checkbox"
-                  className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-[#292524] checked:border-[#292524] focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                  className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-[#472D2D] checked:border-[#E7CBCB] focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
                   id="exampleCheck87"
                 />
                 <label
@@ -101,17 +101,15 @@ const Contact = () => {
             w-full
             px-6
             py-2.5
-            bg-[#292524]
-            text-white
+            bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] 
             font-medium
             text-xs
             leading-tight
             uppercase
             rounded
-            shadow-md
-            hover:bg-[#0e0d0d] hover:shadow-lg
-            focus:bg-[#0e0d0d] focus:shadow-lg focus:outline-none focus:ring-0
-            active:bg-[#0e0d0d] active:shadow-lg
+            shadow-md hover:shadow-lg
+            focus:bg-[#472D2D] focus:shadow-lg focus:outline-none focus:ring-0
+            active:bg-[#472D2D] active:shadow-lg
             transition
             duration-150
             ease-in-out"

@@ -8,7 +8,9 @@ const Footer = () => {
           <img className="h-16" src={logo} alt="" />
         </Link>
         <p className="ml-4">A Toy Shop</p>
-        <p className="ml-4">Copyright © 2023 - All right reserved</p>
+        <p className="ml-4">
+          Copyright © 2023 - All right reserved by ToyBikroy
+        </p>
       </div>
 
       <div>
@@ -62,16 +64,13 @@ const Footer = () => {
       <div>
         <span className="footer-title">Subscribe </span>
         <div className="form-control w-80">
-          <label className="label">
-            <span className="label-text">Enter your email address</span>
-          </label>
           <div className="relative">
             <input
               type="text"
-              placeholder="your email"
+              placeholder="Your email address"
               className="input input-bordered w-full pr-16"
             />
-            <button className="btn  absolute top-0 right-0 rounded-l-none">
+            <button className="btn bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D]  absolute top-0 right-0 rounded-l-none">
               Subscribe
             </button>
           </div>

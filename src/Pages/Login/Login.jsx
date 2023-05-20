@@ -4,7 +4,7 @@ import loginImg from "../../../src/assets/login.jpg";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
-  const { loginHandler } = useContext(AuthContext);
+  const { loginHandler, googleLoginHandler } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -36,6 +36,17 @@ const Login = () => {
         console.log(err);
       });
   };
+
+  const googleHandler = () => {
+    googleLoginHandler()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="hero min-h-screen bg-white">
       <div className="hero-content flex-col lg:flex-row">
@@ -70,6 +81,7 @@ const Login = () => {
                   className="input w-full "
                 />
               </div>
+
               <div className="form-control my-4">
                 <input
                   className="w-1/2 mx-auto cursor-pointer px-2 py-1 rounded bg-[#643843] text-[#E7CBCB] hover:bg-[#472D2D] font-bold"
@@ -77,18 +89,23 @@ const Login = () => {
                   value="Login"
                 />
               </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <Link
-                    to="/register"
-                    className="label-text-alt link link-hover"
-                  >
-                    Don't have an account?
-                  </Link>
-                </label>
-              </div>
             </form>
+            <div className="form-control my-4">
+              <button
+                onClick={googleHandler}
+                className="w-1/2 mx-auto cursor-pointer px-2 py-1 rounded bg-[#4285F4] text-[#FFFFFF] hover:bg-[#4285F4] font-bold"
+              >
+                Google Sign In
+              </button>
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <Link to="/register" className="label-text-alt link link-hover">
+                  Don't have an account?
+                </Link>
+              </label>
+            </div>
           </div>
         </div>
       </div>
