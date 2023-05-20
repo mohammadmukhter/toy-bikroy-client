@@ -9,7 +9,7 @@ const MyToys = () => {
   useEffect(() => {
     const dataFetcher = async () => {
       const fetchedData = await fetch(
-        `http://localhost:5000/myToys?email=${user.email}`
+        `https://toy-bikroy-server.vercel.app/myToys?email=${user.email}`
       );
       const data = await fetchedData.json();
       console.log(data);

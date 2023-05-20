@@ -31,7 +31,7 @@ const UpdateToy = () => {
 
     console.log(toyUpdateFormData);
 
-    // fetch(`http://localhost:5000/toys/${_id}`, {
+    // fetch(`https://toy-bikroy-server.vercel.app/toys/${_id}`, {
     //   method: "PUT",
     //   headers: {
     //     "content-type": "application/json",

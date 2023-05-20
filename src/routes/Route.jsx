@@ -44,7 +44,7 @@ const Route = createBrowserRouter([
         path: "toyDetails/:id",
         element: <ToyDetails></ToyDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toyDetails/${params.id}`),
+          fetch(`https://toy-bikroy-server.vercel.app/toyDetails/${params.id}`),
       },
       {
         path: "updateToy",

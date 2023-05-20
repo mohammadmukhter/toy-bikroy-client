@@ -7,7 +7,7 @@ const Category = () => {
   const [subCategoryData, setSubCategoryData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://toy-bikroy-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setSubCategoryData(data))
       .catch((err) => console.log(err));

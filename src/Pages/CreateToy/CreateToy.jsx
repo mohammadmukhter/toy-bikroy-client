@@ -30,7 +30,7 @@ const CreateToy = () => {
 
     console.log(toyFormData);
 
-    fetch("http://localhost:5000/toys", {
+    fetch("https://toy-bikroy-server.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
