@@ -22,6 +22,23 @@ const MyToys = () => {
     dataFetcher();
   }, [user.email]);
 
+  const deleteHandler = (id) => {
+    console.log(id);
+
+    fetch(`https://toy-bikroy-server.vercel.app/myToys/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          alert("Data deleted successfully");
+          const fData = myToys.filter((x) => x._id !== id);
+          setMyToys(fData);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   if (!myToys) {
     return (
       <div className="text-center">
@@ -91,7 +108,10 @@ const MyToys = () => {
                             Update
                           </button>
                         </Link>
-                        <button className="border px-2 py-1 font-bold rounded  bg-red-600 text-[#E7CBCB] hover:bg-red-800">
+                        <button
+                          onClick={() => deleteHandler(data._id)}
+                          className="border px-2 py-1 font-bold rounded  bg-red-600 text-[#E7CBCB] hover:bg-red-800"
+                        >
                           X
                         </button>
                       </th>

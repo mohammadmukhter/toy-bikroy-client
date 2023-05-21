@@ -1,7 +1,8 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const UpdateToy = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     _id,
@@ -31,20 +32,21 @@ const UpdateToy = () => {
 
     console.log(toyUpdateFormData);
 
-    // fetch(`https://toy-bikroy-server.vercel.app/toys/${_id}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(toyUpdateFormData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data) {
-    //       form.reset();
-    //       alert("data Updated successfully");
-    //     }
-    //   });
+    fetch(`https://toy-bikroy-server.vercel.app/updateToy/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toyUpdateFormData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          navigate("/myToys", { replace: true });
+          alert("data Updated successfully");
+          form.reset();
+        }
+      });
   };
   return (
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
