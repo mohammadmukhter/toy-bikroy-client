@@ -1,17 +1,17 @@
-#ToyBikroy
+# ToyBikroy
 
 
-####Its a Toy Selling Website
+#### Its a Toy Selling Website
 
-##Technologies Used
+## Technologies Used
 
-*React js
-*Node js
-*firebase authentication
-*Express js
-*MongoDB
+* React js
+* Node js
+* firebase authentication
+* Express js
+* MongoDB
 
-##Description
+## Description
 
-_{I build this web site using html, tailwindcss, daisyui, react js, node js, mongoDB, firebase Authentication and more third party library}_
+- I build this web site using html, tailwindcss, daisyui, react js, node js, mongoDB, firebase Authentication and more third party library
 
