@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import loginImg from "../../../src/assets/login.jpg";
 import { AuthContext } from "../../provider/AuthProvider";
 
@@ -17,17 +18,23 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    const userData = {
-      email,
-      password,
-    };
-
-    console.log(userData);
-
     loginHandler(email, password)
       .then((res) => {
         const loggedUser = res.user;
-        console.log(loggedUser);
+        if (loggedUser) {
+          {
+            toast.success("Login Successfully", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
+          }
+        }
         form.reset();
 
         navigate(from, { replace: true });
@@ -41,7 +48,20 @@ const Login = () => {
     googleLoginHandler()
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        if (user) {
+          {
+            toast.success("Login Successfully", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
+          }
+        }
         navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));

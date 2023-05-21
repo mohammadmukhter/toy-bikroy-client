@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import swal from "sweetalert";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const MyToys = () => {
@@ -12,7 +14,7 @@ const MyToys = () => {
         `https://toy-bikroy-server.vercel.app/myToys?email=${user.email}`
       );
       const data = await fetchedData.json();
-      console.log(data);
+
       if (data) {
         setMyToys(data);
       } else {
@@ -23,20 +25,38 @@ const MyToys = () => {
   }, [user.email]);
 
   const deleteHandler = (id) => {
-    console.log(id);
-
-    fetch(`https://toy-bikroy-server.vercel.app/myToys/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          alert("Data deleted successfully");
-          const fData = myToys.filter((x) => x._id !== id);
-          setMyToys(fData);
-        }
-      })
-      .catch((err) => console.log(err));
+    swal({
+      title: "Are you sure?",
+      text: "Are you sure that you want to leave this page?",
+      icon: "warning",
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`https://toy-bikroy-server.vercel.app/myToys/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              {
+                toast.danger("Toy Data Deleted Successfully", {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "dark",
+                });
+              }
+              const fData = myToys.filter((x) => x._id !== id);
+              setMyToys(fData);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    });
   };
 
   if (!myToys) {

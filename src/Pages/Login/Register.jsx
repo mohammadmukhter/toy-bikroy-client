@@ -1,11 +1,13 @@
 import { updateProfile } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import registerImg from "../../../src/assets/register.jpg";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
   const { registerHandler } = useContext(AuthContext);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,32 +15,54 @@ const Register = () => {
 
   const formHandler = (event) => {
     event.preventDefault();
+    setError(null);
     const form = event.target;
     const userName = form.user_name.value;
     const email = form.email.value;
     const password = form.password.value;
     const userPhotoUrl = form.user_photo_url.value;
 
-    const userData = {
-      userName,
-      email,
-      password,
-      userPhotoUrl,
-    };
-
-    console.log(userData);
+    if (!userName) {
+      setError("User Name Required!");
+      return;
+    } else if (!email) {
+      setError("User Email Required!");
+      return;
+    } else if (!password) {
+      setError("User Password Required!");
+      return;
+    } else if (!userPhotoUrl) {
+      setError("User Photo URL Required!");
+      return;
+    }
 
     registerHandler(email, password)
       .then((res) => {
         const registeredUser = res.user;
         console.log(registeredUser);
 
+        {
+          toast.success("New User Create Successfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        }
+
         updateProfile(registeredUser, {
           displayName: `${userName}`,
           photoURL: `${userPhotoUrl}`,
         })
           .then((result) => {
-            console.log("updated user:", result);
+            if (result) {
+              console.log(result);
+            }
+
             form.reset();
             navigate(from, { replace: true });
           })
@@ -89,7 +113,7 @@ const Register = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   name="email"
                   className="input w-full"
@@ -105,6 +129,12 @@ const Register = () => {
                   name="password"
                   className="input w-full "
                 />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <p className="text-red-600">{error}</p>
+                </label>
               </div>
               <div className="form-control my-4">
                 <input

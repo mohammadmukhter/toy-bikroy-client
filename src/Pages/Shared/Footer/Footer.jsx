@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import logoIcon from "../../../assets/logo_icon.png";
 const Footer = () => {
   return (
     <footer className="footer p-10 bg-base-200 text-base-content">
       <div>
         <Link to="/" className=" font-bold normal-case text-xl ps-0">
-          <img className="h-16" src={logo} alt="" />
+          <div className="flex items-center">
+            <img className="h-16" src={logoIcon} alt="" />
+            <img className="h-12" src={logo} alt="" />
+          </div>
         </Link>
         <p className="ml-4">A Toy Shop</p>
         <p className="ml-4">

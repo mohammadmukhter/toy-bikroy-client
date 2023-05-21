@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateToy = () => {
   const location = useLocation();
@@ -30,8 +31,6 @@ const UpdateToy = () => {
       toyDetails,
     };
 
-    console.log(toyUpdateFormData);
-
     fetch(`https://toy-bikroy-server.vercel.app/updateToy/${_id}`, {
       method: "PATCH",
       headers: {
@@ -43,7 +42,18 @@ const UpdateToy = () => {
       .then((data) => {
         if (data) {
           navigate("/myToys", { replace: true });
-          alert("data Updated successfully");
+          {
+            toast.success("Toy Data Updated Successfully", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
+          }
           form.reset();
         }
       });

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const CreateToy = () => {
@@ -41,7 +42,18 @@ const CreateToy = () => {
       .then((data) => {
         if (data.insertedId) {
           form.reset();
-          alert("data inserted successfully");
+          {
+            toast.success("Toy Data Inserted Successfully", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
+          }
         }
       });
   };
