@@ -39,7 +39,7 @@ const MyToys = () => {
           .then((data) => {
             if (data.deletedCount > 0) {
               {
-                toast.danger("Toy Data Deleted Successfully", {
+                toast.success("Toy Data Deleted Successfully", {
                   position: "top-right",
                   autoClose: 5000,
                   hideProgressBar: false,
