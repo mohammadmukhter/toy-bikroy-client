@@ -35,7 +35,6 @@ const Popular = () => {
           modules={[FreeMode, Pagination]}
           className="mySwiper"
         >
-          <SwiperSlide></SwiperSlide>
           <SwiperSlide>
             <div className="card bg-base-100 shadow-xl image-full">
               <figure>

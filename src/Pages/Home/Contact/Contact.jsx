@@ -11,7 +11,7 @@ const Contact = () => {
           </h2>
         </div>
         <div className="flex flex-wrap flex-row-reverse items-center">
-          <div className="grow-0 shrink-0 basis-auto mb-6 md:mb-0 w-1/2 md:w-6/12 px-3 lg:px-6">
+          <div className="grow-0 shrink-0 basis-auto mx-auto mb-6 md:mb-0 w-1/2 md:w-6/12 px-3 lg:px-6">
             <img className="w-auto lg:w-96 mx-auto" src={contactImg} alt="" />
           </div>
           <div className="grow-0 shrink-0 basis-auto mb-12 md:mb-0 w-full md:w-6/12 px-3 lg:px-6">

@@ -9,6 +9,9 @@ const CategoryCard = ({ toy }) => {
           src={toyPhotoUrl}
           alt={toyName}
           className="rounded-xl h:auto lg:h-40 w-full"
+          data-aos="zoom-in"
+          data-aos-easing="linear"
+          data-aos-duration="500"
         />
       </figure>
       <div className="card-body p-2">
