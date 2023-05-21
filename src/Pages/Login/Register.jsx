@@ -22,57 +22,69 @@ const Register = () => {
     const password = form.password.value;
     const userPhotoUrl = form.user_photo_url.value;
 
-    if (!userName) {
-      setError("User Name Required!");
-      return;
-    } else if (!email) {
-      setError("User Email Required!");
-      return;
-    } else if (!password) {
-      setError("User Password Required!");
-      return;
-    } else if (!userPhotoUrl) {
-      setError("User Photo URL Required!");
-      return;
+    if (userName.length == 0) {
+      setError("User Name Required ");
+    }
+    if (password.length < 6) {
+      setError("Password should be 6 characters ");
+    }
+    if (password.length == 0) {
+      setError("Password is required");
+    }
+    if (email.length == 0) {
+      setError("Email is required");
     }
 
-    registerHandler(email, password)
-      .then((res) => {
-        const registeredUser = res.user;
-        console.log(registeredUser);
+    if (password.length >= 6 && email.length != 0 && password != 0) {
+      registerHandler(email, password)
+        .then((res) => {
+          const registeredUser = res.user;
+          console.log(registeredUser);
 
-        {
-          toast.success("New User Create Successfully", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-          });
-        }
+          {
+            toast.success("New User Create Successfully", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
+          }
 
-        updateProfile(registeredUser, {
-          displayName: `${userName}`,
-          photoURL: `${userPhotoUrl}`,
-        })
-          .then((result) => {
-            if (result) {
-              console.log(result);
-            }
-
-            form.reset();
-            navigate(from, { replace: true });
+          updateProfile(registeredUser, {
+            displayName: `${userName}`,
+            photoURL: `${userPhotoUrl}`,
           })
-          .catch((error) => {
-            console.log(error);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+            .then((result) => {
+              if (result) {
+                console.log(result);
+              }
+
+              form.reset();
+              navigate(from, { replace: true });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((err) => {
+          if (err) {
+            toast.warn("User Already Exist", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
+          }
+        });
+    }
   };
   return (
     <div className="hero min-h-screen bg-white">

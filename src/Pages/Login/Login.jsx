@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import loginImg from "../../../src/assets/login.jpg";
@@ -6,6 +6,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
   const { loginHandler, googleLoginHandler } = useContext(AuthContext);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,6 +18,14 @@ const Login = () => {
 
     const email = form.email.value;
     const password = form.password.value;
+
+    if (email.length == 0) {
+      setError("User Email Required!");
+      return;
+    } else if (password.length == 0) {
+      setError("User Password Required!");
+      return;
+    }
 
     loginHandler(email, password)
       .then((res) => {
@@ -84,7 +93,7 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   name="email"
                   className="input w-full"
@@ -100,6 +109,12 @@ const Login = () => {
                   name="password"
                   className="input w-full "
                 />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <p className="text-red-600">{error}</p>
+                </label>
               </div>
 
               <div className="form-control my-4">

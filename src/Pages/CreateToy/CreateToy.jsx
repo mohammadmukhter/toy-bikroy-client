@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const CreateToy = () => {
   const { user } = useContext(AuthContext);
+  const [error, setError] = useState(null);
   const formHandler = (event) => {
     event.preventDefault();
+
+    setError(null);
     const form = event.target;
     const toyName = form.toy_name.value;
     const toyPhotoUrl = form.toy_photo_url.value;
@@ -28,8 +31,6 @@ const CreateToy = () => {
       availableQuantity,
       toyDetails,
     };
-
-    console.log(toyFormData);
 
     fetch("https://toy-bikroy-server.vercel.app/toys", {
       method: "POST",
@@ -73,6 +74,7 @@ const CreateToy = () => {
                 placeholder="Toy Name"
                 name="toy_name"
                 className="input w-full "
+                required
               />
             </div>
             <div className="form-control">
@@ -84,6 +86,7 @@ const CreateToy = () => {
                 placeholder="Toy Photo URL"
                 name="toy_photo_url"
                 className="input w-full "
+                required
               />
             </div>
           </div>
@@ -98,6 +101,7 @@ const CreateToy = () => {
                 placeholder="Seller Name"
                 name="seller_name"
                 className="input w-full "
+                required
               />
             </div>
             <div className="form-control">
@@ -110,6 +114,7 @@ const CreateToy = () => {
                 defaultValue={user.email}
                 name="seller_email"
                 className="input w-full "
+                required
               />
             </div>
           </div>
@@ -124,6 +129,7 @@ const CreateToy = () => {
                 placeholder="Toy Price"
                 name="toy_price"
                 className="input w-full "
+                required
               />
             </div>
             <div className="form-control">
@@ -152,6 +158,7 @@ const CreateToy = () => {
                 placeholder="Rating"
                 name="rating"
                 className="input w-full "
+                required
               />
             </div>
             <div className="form-control">
@@ -163,6 +170,7 @@ const CreateToy = () => {
                 placeholder="Available Quantity"
                 name="available_quantity"
                 className="input w-full "
+                required
               />
             </div>
           </div>
@@ -176,6 +184,11 @@ const CreateToy = () => {
               placeholder="Toy Details"
               name="toy_details"
             ></textarea>
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <p className="text-red-600">{error}</p>
+            </label>
           </div>
           <div className="form-control my-4">
             <input
