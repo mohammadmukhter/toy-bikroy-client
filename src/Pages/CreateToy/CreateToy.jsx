@@ -1,10 +1,14 @@
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const CreateToy = () => {
   const { user } = useContext(AuthContext);
   const [error, setError] = useState(null);
+
+  useTitle("Add Toy");
+
   const formHandler = (event) => {
     event.preventDefault();
 

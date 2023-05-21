@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
   const [toys, setToys] = useState(null);
   const [loading, setLoading] = useState(true);
+  useTitle("All Toys");
+
   useEffect(() => {
     const fetchFunction = async () => {
       const fetchData = await fetch(

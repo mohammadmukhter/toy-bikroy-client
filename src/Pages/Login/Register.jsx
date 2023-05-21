@@ -3,11 +3,14 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import registerImg from "../../../src/assets/register.jpg";
+import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
   const { registerHandler } = useContext(AuthContext);
   const [error, setError] = useState(null);
+
+  useTitle("Register");
 
   const navigate = useNavigate();
   const location = useLocation();

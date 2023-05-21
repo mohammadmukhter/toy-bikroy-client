@@ -1,9 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 
 const UpdateToy = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  useTitle("Update");
 
   const {
     _id,

@@ -2,12 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  useTitle("My Toys");
 
   useEffect(() => {
     const dataFetcher = async () => {

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import loginImg from "../../../src/assets/login.jpg";
+import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
@@ -9,6 +10,8 @@ const Login = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useTitle("Login");
 
   const from = location?.state?.from.pathname || "/";
 
