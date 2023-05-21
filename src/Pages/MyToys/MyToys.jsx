@@ -7,6 +7,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const dataFetcher = async () => {
@@ -20,10 +21,26 @@ const MyToys = () => {
       } else {
         setMyToys([]);
       }
+      setLoading(false);
     };
     dataFetcher();
   }, [user.email]);
 
+  const sortHandler = (event) => {
+    setLoading(true);
+
+    const filterMethod = parseInt(event.target.value);
+
+    fetch(
+      `https://toy-bikroy-server.vercel.app/myToys?email=${user.email}&filter=${filterMethod}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setMyToys(data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  };
   const deleteHandler = (id) => {
     swal({
       title: "Are you sure?",
@@ -59,7 +76,7 @@ const MyToys = () => {
     });
   };
 
-  if (!myToys) {
+  if (!myToys || loading) {
     return (
       <div className="text-center">
         <div
@@ -77,9 +94,21 @@ const MyToys = () => {
   return (
     <div className=" mx-auto px-5 py-2 lg:px-16 lg:pt-12 pb-6">
       <h2 className="text-[#643843] text-4xl font-semibold mb-4 text-center">
-        All Toys
+        My Toys
       </h2>
       <div>
+        <div className="flex justify-center lg:justify-end mb-4">
+          <select
+            onClick={sortHandler}
+            className="select select-error w-full max-w-xs"
+          >
+            <option disabled defaultValue="" selected>
+              Sort by price
+            </option>
+            <option value="1">Ascending Order</option>
+            <option value="-1">Descending Order</option>
+          </select>
+        </div>
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <thead>
@@ -105,7 +134,6 @@ const MyToys = () => {
                 </tr>
               ) : (
                 myToys.map((data) => {
-                  console.log(data.toyName);
                   return (
                     <tr key={data._id}>
                       <td>
