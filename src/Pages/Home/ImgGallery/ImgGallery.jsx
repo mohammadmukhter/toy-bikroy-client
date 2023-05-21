@@ -14,21 +14,36 @@ const ImgGallery = () => {
         </h2>
         <div className="-m-1 flex flex-wrap md:-m-2">
           <div className="flex w-1/2 flex-wrap">
-            <div className="w-1/2 p-1 md:p-2">
+            <div
+              className="w-1/2 p-1 md:p-2"
+              data-aos="zoom-in"
+              data-aos-easing="linear"
+              data-aos-duration="500"
+            >
               <img
                 alt="gallery"
                 className="block h-full w-full rounded-lg object-cover object-center shadow-sm"
                 src={g1}
               />
             </div>
-            <div className="w-1/2 p-1 md:p-2">
+            <div
+              className="w-1/2 p-1 md:p-2"
+              data-aos="zoom-in"
+              data-aos-easing="linear"
+              data-aos-duration="500"
+            >
               <img
                 alt="gallery"
                 className="block h-full w-full rounded-lg object-cover object-center shadow-sm"
                 src={g2}
               />
             </div>
-            <div className="w-full p-1 md:p-2">
+            <div
+              className="w-full p-1 md:p-2"
+              data-aos="zoom-in"
+              data-aos-easing="linear"
+              data-aos-duration="500"
+            >
               <img
                 alt="gallery"
                 className="block h-full w-full rounded-lg object-cover object-center shadow-sm"
@@ -37,21 +52,36 @@ const ImgGallery = () => {
             </div>
           </div>
           <div className="flex w-1/2 flex-wrap">
-            <div className="w-full p-1 md:p-2">
+            <div
+              className="w-full p-1 md:p-2"
+              data-aos="zoom-in"
+              data-aos-easing="linear"
+              data-aos-duration="500"
+            >
               <img
                 alt="gallery"
                 className="block h-full w-full rounded-lg object-cover object-center shadow-sm"
                 src={g6}
               />
             </div>
-            <div className="w-1/2 p-1 md:p-2">
+            <div
+              className="w-1/2 p-1 md:p-2"
+              data-aos="zoom-in"
+              data-aos-easing="linear"
+              data-aos-duration="500"
+            >
               <img
                 alt="gallery"
                 className="block h-full w-full rounded-lg object-cover object-center shadow-sm"
                 src={g4}
               />
             </div>
-            <div className="w-1/2 p-1 md:p-2">
+            <div
+              className="w-1/2 p-1 md:p-2"
+              data-aos="zoom-in"
+              data-aos-easing="linear"
+              data-aos-duration="500"
+            >
               <img
                 alt="gallery"
                 className="block h-full w-full rounded-lg object-cover object-center shadow-sm"

@@ -9,7 +9,12 @@ const Banner = () => {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-left text-neutral-content absolute left-0 top-50">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">
+            <h1
+              className="mb-5 text-5xl font-bold"
+              data-aos="fade-left"
+              data-aos-easing="linear"
+              data-aos-duration="1000"
+            >
               Where Every Child's Dream Comes True!
             </h1>
             <p className="mb-5">
