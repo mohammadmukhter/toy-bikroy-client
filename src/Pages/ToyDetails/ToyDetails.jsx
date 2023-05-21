@@ -2,7 +2,6 @@ import { useLoaderData } from "react-router-dom";
 
 const ToyDetails = () => {
   const loadedData = useLoaderData();
-  console.log(loadedData[0]);
 
   const {
     toyName,
@@ -16,7 +15,6 @@ const ToyDetails = () => {
     toyDetails,
   } = loadedData[0];
 
-  console.log(toyPhotoUrl);
   return (
     <div>
       <div className="max-w-2xl overflow-hidden bg-white  shadow-md mx-auto">

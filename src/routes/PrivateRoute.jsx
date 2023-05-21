@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 const PrivateRoute = ({ children }) => {
@@ -24,13 +25,24 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   }
+
   return (
     <div>
-      <Navigate
-        state={{ from: location }}
-        to="/login"
-        replace="true"
-      ></Navigate>
+      <Navigate state={{ from: location }} to="/login" replace="true">
+        {toast.warn(
+          "You have to log in first to view detailsLogin Successfully",
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          }
+        )}
+      </Navigate>
     </div>
   );
 };
