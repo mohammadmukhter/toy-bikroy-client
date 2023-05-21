@@ -18,10 +18,10 @@ const CreateToy = () => {
     const toyPhotoUrl = form.toy_photo_url.value;
     const sellerName = form.seller_name.value;
     const sellerEmail = form.seller_email.value;
-    const toyPrice = form.toy_price.value;
+    const toyPrice = parseInt(form.toy_price.value);
     const toyCategory = form.toy_category.value;
-    const rating = form.rating.value;
-    const availableQuantity = form.available_quantity.value;
+    const rating = parseInt(form.rating.value);
+    const availableQuantity = parseInt(form.available_quantity.value);
     const toyDetails = form.toy_details.value;
 
     const toyFormData = {
@@ -36,31 +36,43 @@ const CreateToy = () => {
       toyDetails,
     };
 
-    fetch("https://toy-bikroy-server.vercel.app/toys", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(toyFormData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          form.reset();
-          {
-            toast.success("Toy Data Inserted Successfully", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "dark",
-            });
+    if (isNaN(toyPrice)) {
+      alert("price must be number value");
+    }
+    if (isNaN(rating)) {
+      alert("rating must be number value");
+    }
+    if (isNaN(availableQuantity)) {
+      alert("quantity must be number value");
+    }
+
+    if (!isNaN(toyPrice) && !isNaN(rating) && !isNaN(availableQuantity)) {
+      fetch("https://toy-bikroy-server.vercel.app/toys", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(toyFormData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            form.reset();
+            {
+              toast.success("Toy Data Inserted Successfully", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+            }
           }
-        }
-      });
+        });
+    }
   };
   return (
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
