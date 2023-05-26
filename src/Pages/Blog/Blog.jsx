@@ -6,7 +6,7 @@ const Blog = () => {
     <div className="mx-12 my-8 space-y-4">
       <div>
         <h2 className="text-6xl font-bold text-[#643843] text-center mb-8 mt-12">
-          MongoDB and Node js blog
+          MongoDB and Node js blogs
         </h2>
       </div>
       <div className="border border-gray-400 p-2 rounded-xl">
